@@ -1,0 +1,92 @@
+import java.awt.geom.Point2D;  
+import java.util.Scanner;  
+import java.awt.geom.Path2D;  
+class Triangle{  
+    Point2D.Double[] dis=new Point2D.Double[3];  
+    int count=0;  
+    double save=0;  
+    public void val(double a,double b){  
+        dis[count]=new Point2D.Double(a,b);  
+        count++;  
+    }  
+    public double lenth1(){  
+        double len_1=dis[0].distance(dis[1]);  
+        return len_1;  
+    }  
+    public double lenth2(){  
+        double len_2=dis[1].distance(dis[2]);  
+        return len_2;  
+    }  
+    public double lenth3(){  
+        double len_3=dis[2].distance(dis[0]);  
+        return len_3;  
+    }  
+    public double s(double x,double y,double z)  
+    {  
+        Double sval=(x+y+z)/2;  
+        return sval;  
+    }  
+    public double a(double s,double x,double y,double z){  
+        double a = Math.pow(s * (s - lenth1()) * (s - lenth2()) * (s - lenth3()),0.5);  
+        return a;  
+    }  
+    public double istri(double a){  
+        if(a==0){  
+            return 0;  
+        }  
+        else  
+            return 1;  
+    }  
+  
+}  
+public class Main {  
+    public static void main(String[] args) {  
+        Scanner input = new Scanner(System.in);  
+        int N = input.nextInt();  
+        for (int i = 0; i < N; i++) {  
+            Triangle compute = new Triangle();  
+            for (int j = 0; j < 3; j++) {  
+                Double a = input.nextDouble();  
+                Double b = input.nextDouble();  
+                compute.val(a, b);  
+            }  
+            double xy = compute.lenth1();  
+            double yz = compute.lenth2();  
+            double xz = compute.lenth3();  
+            double tri = compute.s(xy, yz, xz);  
+            double A = compute.a(tri, xy, yz, xz);  
+            Double yesno = compute.istri(A);  
+            if (yesno == 0) {  
+                System.out.println("Just Line!");  
+            } else if (yesno == 1) {  
+                if (xy > yz && yz > xz) {  
+                    System.out.printf("%.3f", xz);  
+                    System.out.printf(" %.3f", yz);  
+                    System.out.printf(" %.3f", xy);  
+                } else if (xy > xz && xz > yz) {  
+                    System.out.printf("%.3f", yz);  
+                    System.out.printf(" %.3f", xz);  
+                    System.out.printf(" %.3f", xy);  
+                } else if (yz > xy && xy > xz) {  
+                    System.out.printf("%.3f", xz);  
+                    System.out.printf(" %.3f", xy);  
+                    System.out.printf(" %.3f", yz);  
+                } else if (yz > xz && xz > xy) {  
+                    System.out.printf("%.3f", xy);  
+                    System.out.printf(" %.3f", xz);  
+                    System.out.printf(" %.3f", yz);  
+                } else if (xz > xy && xy > yz) {  
+                    System.out.printf("%.3f", yz);  
+                    System.out.printf(" %.3f", xy);  
+                    System.out.printf(" %.3f", xz);  
+                } else if (xz > yz && yz > xy) {  
+                    System.out.printf("%.3f", xy);  
+                    System.out.printf(" %.3f", yz);  
+                    System.out.printf(" %.3f", xz);  
+                }  
+                System.out.printf(" %.3f", A);  
+                System.out.println();  
+            }  
+        }  
+    }  
+} 
