@@ -1,0 +1,39 @@
+import java.util.Scanner;  
+  
+public class Main {  
+    public static void main(String[] args) {  
+        Scanner input = new Scanner(System.in);  
+        while (input.hasNext()) {  
+            String s = input.nextLine();  
+            if(s.length()-1==0)  
+                break;  
+            int even = 0, odd = 0;  
+            for (int i = s.length() - 1; i >= 0; i--) {  
+                if (i % 2 == 0 || i == 0) {  
+                    int a = s.charAt(i) - '0';  
+                    even = even + a;  
+                }  
+                if (i % 2 == 1 || i == 1) {  
+                    int b = s.charAt(i) - '0';  
+                    odd = odd + b;  
+                }  
+            }  
+            if (odd > even) {  
+                odd = odd - even;  
+                if (odd % 11 == 0) {  
+                    System.out.println(s+" is a multiple of 11.");  
+                } else  
+                    System.out.println(s+" is not a multiple of 11.");  
+            } else if (even > odd) {  
+                even = even - odd;  
+                if (even % 11 == 0) {  
+                    System.out.println(s+" is a multiple of 11.");  
+                } else  
+                    System.out.println(s+" is not a multiple of 11.");  
+            }  
+            if (even == odd) {  
+                System.out.println(s+" is a multiple of 11.");  
+            }  
+        }  
+    }  
+} 
