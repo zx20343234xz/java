@@ -1,0 +1,17 @@
+import java.math.BigInteger;  
+import java.util.Scanner;  
+  
+public class Main {  
+  
+    public static void main(String[] args) {  
+        int count=0;  
+        Scanner sc=new Scanner(System.in);  
+        String n=new String();  
+        BigInteger input=new BigInteger("1000000");  
+        while(count<10) {  
+            input=input.nextProbablePrime();  
+            System.out.println(input);  
+            count++;  
+        }  
+    }  
+}
