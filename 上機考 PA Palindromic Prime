@@ -1,0 +1,53 @@
+import java.util.Scanner;  
+public class Main {  
+    public static void main(String[] args) {  
+        int i, j, count, save;  
+        save = 0;  
+        count = 0;  
+        Scanner input = new Scanner(System.in);  
+        while (input.hasNext()) {  
+            int n = input.nextInt();  
+            if(n==0)  
+                System.out.println();  
+            if (n != 0&&n<=100) {  
+                for (i = 2; i <= 100000; i++) {  
+                    for (j = 2; j < i; j++) {  
+                        if (i % j == 0)  
+                            break;  
+                    }  
+                    if (j >= i) {  
+                        String s = Integer.toString(i);  
+                        int low = 0;  
+                        int high = s.length() - 1;  
+                        boolean isprime = true;  
+                        while (low < high) {  
+                            if (s.charAt(low) != s.charAt(high)) {  
+                                isprime = false;  
+                                break;  
+                            }  
+                            low++;  
+                            high--;  
+                        }  
+                        if (isprime) {  
+                            System.out.print(s);  
+                            count++;  
+                            if(count%10==0){  
+                                System.out.println();  
+                            }  
+                            else if(count%10!=0&&n == count)  
+                            {  
+                                System.out.println();  
+                            }  
+                            else  
+                                System.out.print(" ");  
+                        }  
+                    }  
+                    if (n == count) {  
+                        count = 0;  
+                        break;  
+                    }  
+                }  
+            }  
+        }  
+    }  
+} 
