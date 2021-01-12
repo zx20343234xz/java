@@ -1,0 +1,17 @@
+public class Main {  
+  
+    public static void main(String[] args) {  
+        Scanner input=new Scanner(System.in);  
+        String N=input.nextLine();  
+        int time=Integer.parseInt(N);  
+        for(int i=0;i<time;i++) {  
+            String sc = input.nextLine();  
+            String take = input.nextLine();  
+            String token = input.nextLine();  
+            String nstr = sc.replace(take, token);  
+            String reverse = new StringBuffer(nstr).reverse().toString();  
+            System.out.println(reverse);  
+  
+        }  
+    }  
+}  
