@@ -1,0 +1,94 @@
+import java.util.Scanner;  
+  
+  
+abstract class GeometricObject {  
+    private String color = " ";  
+    private boolean filled;  
+    private java.util.Date dateCreated;  
+  
+    protected GeometricObject() {  
+        dateCreated = new java.util.Date();  
+    }  
+    protected GeometricObject(String color, boolean filled) {  
+        dateCreated = new java.util.Date();  
+        this.color = color;  
+        this.filled = filled;  
+    }  
+  
+    public String getColor() {  
+        return color;  
+    }  
+    public void setColor(String color) {  
+        this.color = color;  
+    }  
+  
+    public boolean isFilled() {  
+        return filled;  
+    }  
+  
+    public void setFilled(boolean filled) {  
+        this.filled = filled;  
+    }  
+  
+    public java.util.Date getDateCreated() {  
+        return dateCreated;  
+    }  
+  
+    @Override  
+    public String toString() {  
+        return "created on " + dateCreated + "\ncolor: " + color +  
+                " and filled: " + filled;  
+    }  
+    public abstract double dragon(double x,double y,double z);  
+  
+    public abstract double getPerimeter(double x,double y,double z);  
+  
+}  
+class Triangle extends GeometricObject{  
+    @Override  
+    public  double dragon(double x,double y,double z){  
+        double S=0;  
+        double save=0;  
+        S=x+y+z;  
+        S=S/2;  
+        x=S-x;  
+        y=S-y;  
+        z=S-z;  
+        S=S*x*y*z;  
+        return Math.sqrt(S);  
+    }  
+    @Override  
+    public double getPerimeter(double x,double y,double z){  
+        double per=0;  
+        per=x+y+z;  
+        return per;  
+    }  
+}  
+public class Main {  
+  
+    public static void main(String[] args) {  
+        Scanner input=new Scanner(System.in);  
+        boolean fill;  
+        double x=input.nextDouble();  
+        double y=input.nextDouble();  
+        double z=input.nextDouble();  
+        String color=input.next();  
+        String bool=input.next();  
+        GeometricObject qq=new Triangle();  
+        System.out.println("Triangle: side1 = "+x+" side2 = "+y+ " side3 = "+z);  
+        qq.dragon(x,y,z);  
+        System.out.println("The area is "+qq.dragon(x,y,z));  
+        System.out.println("The perimeter is "+qq.getPerimeter(x,y,z));  
+        qq.setColor(color);  
+        System.out.println(qq.getColor());  
+        if(bool.equals("true"))  
+        {  
+            qq.setFilled(true);  
+            System.out.println(qq.isFilled());  
+        }  
+        else {  
+            qq.setFilled(false);  
+            System.out.println(qq.isFilled());  
+        }  
+    }  
+}
