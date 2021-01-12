@@ -1,0 +1,47 @@
+import java.util.Scanner;  
+  
+public class Main {  
+  
+    public static void main(String[] args) {  
+        Scanner input = new Scanner(System.in);  
+        int N = input.nextInt();  
+        int count=1;  
+        for (int times = 0; times < N; times++) {  
+            int a = input.nextInt();  
+            int b = input.nextInt();  
+            int[][] x = new int[a][b];  
+            for (int first = 0; first < a; first++)  
+                for (int tw = 0; tw < b; tw++) {  
+                    int num = input.nextInt();  
+                    x[first][tw] = num;  
+                }  
+            int c = input.nextInt();  
+            int d = input.nextInt();  
+            int[][] y = new int[c][d];  
+            for (int first = 0; first < c; first++)  
+                for (int tw = 0; tw < d; tw++) {  
+                    int num = input.nextInt();  
+                    y[first][tw] = num;  
+                }  
+  
+            int[][] val = new int[a][d];  
+            for (int first = 0; first < a; first++) {  
+                for (int tw = 0; tw < d; tw++)  
+                    for (int third = 0; third < c; third++)  
+                        val[first][tw] = val[first][tw] + x[first][third] * y[third][tw];  
+            }  
+            for (int first = 0; first < a; first++) {  
+                for (int tw = 0; tw < d; tw++) {  
+                    if (tw == d - 1)  
+                        System.out.print(val[first][tw]);  
+                    else  
+                        System.out.print(val[first][tw] + " ");  
+                }  
+                System.out.println();  
+            }  
+            if(count!=N)  
+            System.out.println();  
+            count++;  
+        }  
+    }  
+}
